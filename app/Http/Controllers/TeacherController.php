@@ -12,6 +12,7 @@ class TeacherController extends Controller
     {
         $teachers = Teacher::all();
         return view('teachers.index', compact('teachers'));
+       
     }
 
     public function create()
@@ -23,13 +24,10 @@ class TeacherController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'subject' => 'required',
-        ]);
-
-        Teacher::create($validatedData);
-
+        $data = $request->all();
+    
+        Teacher::create($data);
+    
         return redirect()->route('teachers.index')
             ->with('success', 'Teacher created successfully.');
     }
@@ -37,15 +35,15 @@ class TeacherController extends Controller
     
     public function show($id)
     {
-        $teacher = Teacher::findOrFail($id);
-        return view('teachers.show', compact('teacher'));
+        $teachers = Teacher::findOrFail($id);
+        return view('teachers.show', compact('teachers'));
     }
 
    
     public function edit($id)
     {
-        $teacher = Teacher::findOrFail($id);
-        return view('teachers.edit', compact('teacher'));
+        $teachers = Teacher::findOrFail($id);
+        return view('teachers.edit', compact('teachers'));
     }
 
     
@@ -56,8 +54,8 @@ class TeacherController extends Controller
             'subject' => 'required',
         ]);
 
-        $teacher = Teacher::findOrFail($id);
-        $teacher->update($validatedData);
+        $teachers = Teacher::findOrFail($id);
+        $teachers->update($validatedData);
 
         return redirect()->route('teachers.index')
             ->with('success', 'Teacher updated successfully.');
@@ -66,8 +64,8 @@ class TeacherController extends Controller
    
     public function destroy($id)
     {
-        $teacher = Teacher::findOrFail($id);
-        $teacher->delete();
+        $teachers = Teacher::findOrFail($id);
+        $teachers->delete();
 
         return redirect()->route('teachers.index')
             ->with('success', 'Teacher deleted successfully.');

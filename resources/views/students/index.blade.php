@@ -1,3 +1,4 @@
+@extends('students.layout')
 @section('content')
 <div class="container">
     <div class="row">
@@ -7,8 +8,8 @@
                     <h2>Student_page</h2>
                 </div>
                 <div class="card-body">
-                    <a href="{{url('/student/create')}}" class="btn btn-success btn-sm" title="Add Student Information">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    <a href="{{url('/students/create')}}" class="" title="Add Student Information">
+                    <button type="Add" class="btn btn-primary">Add</button>
                     </a>
                     <br/>
                     <br/>
@@ -41,11 +42,20 @@
 
                                     <td>
                                     
-                                        <a href="{{ url('/student/' . $item->id) }}" title="View Student"><button class="btn btn-primary btn-sm">View</button></a>
 
-                                        <a href="{{ url('/student/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-warning btn-sm">Edit</button></a>
+                                        <a href="{{ url('/students/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-warning btn-sm">Edit</button></a>
                                          
-                                        <form action="{{ url('/student/' . $item->id) }}" method="post">
+
+
+                                        /*<form action="{{ url('/students/' . $item->id) }}" method="post">
+                                             @csrf
+                                            @method('put')
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Edit Student">Edit</button>
+                                        </form>
+                                       */
+
+
+                                        <form action="{{ url('/students/' . $item->id) }}" method="post">
                                              @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" title="Delete Student">Delete</button>

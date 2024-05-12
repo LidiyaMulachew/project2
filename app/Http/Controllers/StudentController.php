@@ -17,16 +17,21 @@ class StudentController extends Controller
     public function create()
     {
         return view('students.create');
-    }
+        //return "works"; 
+   }
+
+public function store(Request $request)
+{
+    $data = $request->all();
+
+    Student::create($data);
+
+    return redirect()->route('students.index')
+        ->with('success', 'Student created successfully.');
+}
+
     
-    public function store(Request $request)
-    {
-        Student::create($request->all());
-        
-        return redirect()->route('students.index');
-    }
-    
-    public function edit(Student $student)
+    public function edit($id)
     {
         return view('students.edit', compact('student'));
     }

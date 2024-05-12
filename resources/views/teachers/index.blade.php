@@ -1,3 +1,4 @@
+@extends('teachers.layout')
 @section('content')
 <div class="container">
     <div class="row">
@@ -7,8 +8,10 @@
                     <h2>Teacher_page</h2>
                 </div>
                 <div class="card-body">
-                    <a href="{{url('/teacher/create')}}" class="btn btn-success btn-sm" title="Add Teacher Information">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    <a href="{{url('/teachers/create')}}" class="" title="Add Teacher Information">
+                        
+                      <button type="Add" class="btn btn-primary">Add</button>
+                        
                     </a>
                     <br/>
                     <br/>
@@ -38,11 +41,10 @@
                                     <td>{{ $item->Teaching}}</td>
                                     <td>
                                     
-                                        <a href="{{ url('/teacher/' . $item->id) }}" title="View Teacher"><button class="btn btn-primary btn-sm">View</button></a>
 
-                                        <a href="{{ url('/teacher/' . $item->id . '/edit') }}" title="Edit Teacher"><button class="btn btn-warning btn-sm">Edit</button></a>
+                                        <a href="{{ url('/teachers/' . $item->id . '/edit') }}" title="Edit Teacher"><button class="btn btn-warning btn-sm">Edit</button></a>
                                           
-                                        <form action="{{ url('/teacher/' . $item->id) }}" method="post">
+                                        <form action="{{ url('/teachers/' . $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" title="Delete Teacher">Delete</button>
