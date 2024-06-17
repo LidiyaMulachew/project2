@@ -11,7 +11,9 @@
                     <a href="{{url('/students/create')}}" class="" title="Add Student Information">
                     <button type="Add" class="btn btn-primary">Add</button>
                     </a>
+     
                     <br/>
+                
                     <br/>
                     <div class="table-responsive">
                         <table class="table">
@@ -47,12 +49,7 @@
                                          
 
 
-                                        /*<form action="{{ url('/students/' . $item->id) }}" method="post">
-                                             @csrf
-                                            @method('put')
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Edit Student">Edit</button>
-                                        </form>
-                                       */
+                                        
 
 
                                         <form action="{{ url('/students/' . $item->id) }}" method="post">

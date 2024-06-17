@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserStudentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,5 +19,29 @@ Route::post('/teachers', [TeacherController::class, 'store'])->name('teachers.st
 Route::get('/teachers/{teacher}/edit', [TeacherController::class, 'edit'])->name('teachers.edit');
 Route::put('/teachers/{teacher}', [TeacherController::class, 'update'])->name('teachers.update');
 Route::delete('/teachers/{teacher}', [TeacherController::class, 'destroy'])->name('teachers.destroy');
+
+
+
+Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
+Route::post('/admin-signup', [AuthController::class, 'adminSignup'])->name('admin.signup');
+
+
+
+Route::get('/admin', [AuthController::class, 'admin'])->name('admin');
+Route::post('/admin', [AuthController::class, 'admin'])->name('admin');
+
+
+
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+
+
+Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
+Route::post('/registration', [AuthController::class, 'registrationPost'])->name('registration.post');
+
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 require __DIR__.'/auth.php';
